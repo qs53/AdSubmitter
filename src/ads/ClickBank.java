@@ -1,13 +1,15 @@
 package ads;
 
+import java.util.UUID;
+
 public class ClickBank extends AffiliateProgram {
 
-    private static String[] titles = new String[]{"Your First ClickBank Check Is Waiting for You To Go And Get It!", "Your First ClickBank Check Is Waiting for You!",
+    private static String[] titles = new String[]{"EARN MONEY WITH CLICKBANK!", "Your First ClickBank Check Is Waiting for You!",
             "Your First ClickBank Check Is Waiting for You To Go And Get It", "Your First ClickBank Check Is Waiting for You", "Learn to make money online with ClickBank University!",
             "Learn to make money online with ClickBank University", "Learn to make money online!", "Learn to make money online", "Secrets to earning money online!", "Secrets to earning money online"};
     static int index = 0;
     static String imagePathLinux = "/home/qusai/Documents/Videos/money_online/CB_university/commoney.jpg";
-    static String imagePathWindows = "";
+    static String imagePathWindows = "C:\\Users\\ASUS\\Downloads\\money_online\\CB_university\\commoney.jpg";
 
     public ClickBank(String title, String description, String url, String youtubeVideo, String imagePath, String keywords) {
         super(title, description, url, youtubeVideo, imagePath, keywords);
@@ -15,7 +17,7 @@ public class ClickBank extends AffiliateProgram {
 
     public static ClickBank getInstance() {
         String url = "https://bit.ly/317Q3Wi";
-            return new ClickBank(titles[index++],
+            return new ClickBank(titles[index],
                 "Join the BRAND NEW Fully Upgraded ClickBank University 2.0. ClickBank University 2.0 delivers the latest up to date strategies, methods and tactics for you build your ClickBank business rapidly. \n" +
                         "We've made it possible for you to follow in the Exact Footsteps of PROVEN 7 and 8-Figure ClickBank Winners. \n" +
                         "You'll get Complete Access to TWO Separate Training Tracks: ClickBank Product Publishing & ClickBank Affiliate Mastery. PLUS, you'll Get Even More Bonuses to Guarantee Your Success. \n" +

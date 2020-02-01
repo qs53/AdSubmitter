@@ -10,7 +10,7 @@ public class SAS extends AffiliateProgram {
             "NEW MONEY MAKING SYSTEM!", "STOP: Even You Can Make $$ every day – Chance of a Lifetime!", "Follow This \"Beginner Friendly\" 3-Step Formula Webinar!"};
     static int index = 0;
     static String imagePathLinux = "/home/qusai/Documents/Videos/money_online/Super_Affiliate_System_Crestani/images.jpg";
-    static String imagePathWindows = "";
+    static String imagePathWindows = "C:\\Users\\ASUS\\Downloads\\money_online\\Super_Affiliate_System_Crestani\\images.jpg";
 
     public SAS(String title, String description, String url, String youtubeVideo, String imagePath, String keywords) {
         super(title, description, url, youtubeVideo, imagePath, keywords);
@@ -18,7 +18,7 @@ public class SAS extends AffiliateProgram {
 
     public static SAS getInstance() {
         String url = "https://bit.ly/2u2SygD";
-        return new SAS(titles[index++],
+        return new SAS(titles[index],
                 "The Super Affiliate System is a complete affiliate marketing training system that shows people how to create massively profitable affiliate campaigns. \n" +
                         "Created by John Crestani, an internationally popular expert in the field of affiliate marketing. He'll show an enormous amount of proof on the training that HE and his STUDENTS are doing that pretty effortlessly. \n" +
                         "So, make sure you register now to claim your spot on this special training. Signup for the free training HERE: https://bit.ly/2u2SygD\n" +
