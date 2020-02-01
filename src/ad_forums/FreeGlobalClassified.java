@@ -36,7 +36,7 @@ public class FreeGlobalClassified {
                 AffiliateProgram program = MinuteAffiliate.getInstance();
                 Select categories = new Select(driver.findElement(By.id("catId")));
                 categories.selectByValue(workFromHomeCat);
-                driver.findElement(By.id("titleen_US")).sendKeys(program.title + "(" + UUID.randomUUID().toString().replace("-", "") + ")");
+                driver.findElement(By.id("titleen_US")).sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
                 Keyboard keyboard = new Keyboard();
                 keyboard.type("\t\t" + program.description);
                 driver.findElement(By.name("qqfile")).sendKeys(program.imagePath);
