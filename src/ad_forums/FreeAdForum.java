@@ -19,7 +19,7 @@ public class FreeAdForum {
         String workAtHomeCat = "106";
         String affMarkCat = "126";
         try {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\ASUS\\Downloads\\selenium\\chromedriver_win32\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", FreeGlobalClassified.chromeDriverLocationLinux);
             WebDriver driver = new ChromeDriver();
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();

@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.concurrent.TimeUnit;
 
 public class FreeGlobalClassified {
+    public static String chromeDriverLocationLinux = "/home/qusai/Documents/Videos/selenium/chromedriver_linux64/chromedriver";
+    public static String chromeDriverLocationWindows = "";
+
     public static void main(String[] args) {
         String publishURL = "http://www.freeglobalclassifiedads.com/item/new";
         String[] top10States = new String[]{"New York", "California", "Illinois", "Texas", "Arizona", "Texas", "Pennsylvania", "California", "Texas", "California"};
@@ -19,7 +22,7 @@ public class FreeGlobalClassified {
         String affMarkCat = "126";
 
         try {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\ASUS\\Downloads\\selenium\\chromedriver_win32\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", chromeDriverLocationLinux);
             WebDriver driver = new ChromeDriver();
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
