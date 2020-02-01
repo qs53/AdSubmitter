@@ -4,6 +4,7 @@ import ads.*;
 import keyboard.Keyboard;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -29,16 +30,21 @@ public class FreeGlobalClassified {
             initialize(driver);
 
             driver.navigate().to(publishURL);
-            driver.findElement(By.name("email")).sendKeys("homenet142@gmail.com");
+            driver.findElement(By.name("email")).sendKeys("keihagi72@gmail.com");
             driver.findElement(By.id("password")).sendKeys("globaladsisgood123");
             driver.findElement(By.xpath("//button[@type='submit']")).submit();
+
+            Keyboard keyboard = new Keyboard();
             for (int i = 0; i < top200Cities.length; i++) {
                 AffiliateProgram program = MinuteAffiliate.getInstance();
                 Select categories = new Select(driver.findElement(By.id("catId")));
                 categories.selectByValue(workFromHomeCat);
                 driver.findElement(By.id("titleen_US")).sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
-                Keyboard keyboard = new Keyboard();
-                keyboard.type("\t\t" + program.description);
+                driver.switchTo().frame(0);
+                WebElement desc = driver.findElement(By.id("tinymce"));
+                desc.click();
+                desc.sendKeys(program.description);
+                driver.switchTo().defaultContent();
                 driver.findElement(By.name("qqfile")).sendKeys(program.imagePath);
                 Select countries = new Select(driver.findElement(By.id("countryId")));
                 Select regions = new Select(driver.findElement(By.id("regionId")));
