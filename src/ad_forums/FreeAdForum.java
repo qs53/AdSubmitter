@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class FreeAdForum {
     public static void main(String[] args) {
-        String publishURL = "http://www.freeglobalclassifiedads.com/item/new";
+        String publishURL = "http://www.thefreeadforum.com/postclassifieds/item/new";
         String workFromHomeCat = "100";
         String businessOppsCat = "96";
         String workAtHomeCat = "106";
