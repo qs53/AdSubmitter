@@ -9,12 +9,15 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.concurrent.TimeUnit;
 
 public class FreeGlobalClassified {
-    static String publishURL = "http://www.freeglobalclassifiedads.com/item/new";
     public static void main(String[] args) {
+        String publishURL = "http://www.freeglobalclassifiedads.com/item/new";
         String[] top10States = new String[]{"New York", "California", "Illinois", "Texas", "Arizona", "Texas", "Pennsylvania", "California", "Texas", "California"};
         String[] top10Cities = new String[]{"New York City", "Los Angeles", "Chicago", "Houston", "Phoenix", "San Antonio", "Philadelphia", "San Diego", "Dallas", "San Jose"};
-        String keywords = "work from home, work from home jobs, make money online, money online, jobs online, online jobs, work at home jobs, digital marketing, affiliate marketing, internet marketing, make money at home, digital marketing course, affiliate marketing training, digital marketing training, affiliate marketing course";
-        String clickBankKeywords = "work from home, work from home jobs, make money online, money online, jobs online, online jobs, work at home jobs, digital marketing, affiliate marketing, internet marketing, make money at home, digital marketing course, affiliate marketing training, digital marketing training, affiliate marketing course, how to sell ebooks, sell ebooks online";
+        String workFromHomeCat = "100";
+        String businessOppsCat = "96";
+        String workAtHomeCat = "106";
+        String affMarkCat = "126";
+
         try {
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\ASUS\\Downloads\\selenium\\chromedriver_win32\\chromedriver.exe");
             WebDriver driver = new ChromeDriver();
@@ -30,7 +33,7 @@ public class FreeGlobalClassified {
             for (int i = 0; i < top10Cities.length; i++) {
                 AffiliateProgram program = MillionareSociety.getInstance();
                 Select categories = new Select(driver.findElement(By.id("catId")));
-                categories.selectByValue("100");
+                categories.selectByValue(workFromHomeCat);
                 driver.findElement(By.id("titleen_US")).sendKeys(program.title);
                 Keyboard keyboard = new Keyboard();
                 keyboard.type("\t\t" + program.description);
@@ -42,7 +45,7 @@ public class FreeGlobalClassified {
                 regions.selectByVisibleText(top10States[i]);
                 cities.selectByVisibleText(top10Cities[i]);
                 driver.findElement(By.id("meta_website-link")).sendKeys(program.url);
-                driver.findElement(By.id("meta_keywords")).sendKeys(keywords);
+                driver.findElement(By.id("meta_keywords")).sendKeys(program.keywords);
                 if (program.youtubeVideo != null) {
                     driver.findElement(By.name("s_youtube")).sendKeys(program.youtubeVideo);
                     keyboard.type("\t\n");
