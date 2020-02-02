@@ -34,44 +34,150 @@ public class FreeAdForum {
             driver.findElement(By.xpath("//button[@type='submit']")).submit();
 
             Keyboard keyboard = new Keyboard();
-
             String category = workAtHomeCat;
+            AffiliateProgram[] programs = new AffiliateProgram[] { MinuteAffiliate.getInstance(), SAS.getInstance(),
+                    ClickBank.getInstance(), MillionareSociety.getInstance() };
 
-            postAds(MinuteAffiliate.getInstance(), driver, keyboard, category);
-            postAds(SAS.getInstance(), driver, keyboard, category);
-            postAds(ClickBank.getInstance(), driver, keyboard, category);
-            postAds(MillionareSociety.getInstance(), driver, keyboard, category);
+
+            postAdsUSA(programs, driver, keyboard, category);
+            postAdsIndia(programs, driver, keyboard, category);
+            postAdsAus(programs, driver, keyboard, category);
+            postAdsCanada(programs, driver, keyboard, category);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void postAds(AffiliateProgram program, WebDriver driver, Keyboard keyboard, String category) {
-        for (int i = 0; i < top200Cities.length; i++) {
-            Select categories = new Select(driver.findElement(By.id("catId")));
-            categories.selectByValue(category);
-            driver.findElement(By.id("titleen_US")).sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
-            driver.switchTo().frame(0);
-            WebElement desc = driver.findElement(By.id("tinymce"));
-            desc.click();
-            desc.sendKeys(program.description);
-            driver.switchTo().defaultContent();
-            driver.findElement(By.name("qqfile")).sendKeys(program.imagePath);
-            Select countries = new Select(driver.findElement(By.id("countryId")));
-            Select regions = new Select(driver.findElement(By.id("regionId")));
-            Select cities = new Select(driver.findElement(By.id("cityId")));
-            countries.selectByVisibleText("United States");
-            regions.selectByVisibleText(top200States[i]);
-            cities.selectByVisibleText(top200Cities[i]);
-            driver.findElement(By.id("meta_website-link")).sendKeys(program.url);
-            driver.findElement(By.id("meta_keywords")).sendKeys(program.keywords);
-            if (program.youtubeVideo != null)
-                driver.findElement(By.name("s_youtube")).sendKeys(program.youtubeVideo);
-            driver.findElement(By.xpath("//input[@value='001']")).click();
-            keyboard.type("\t\n");
-            driver.get(publishURL);
-            if (driver.getCurrentUrl().equals(homeURL)) driver.get(publishURL);
+    private static void postAdsUSA(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String category) {
+        for (int i = 0; i < top30CitiesUSA.length; i++) {
+            for (int j = 0; j < programs.length; j++) {
+                AffiliateProgram program = programs[j];
+                Select categories = new Select(driver.findElement(By.id("catId")));
+                categories.selectByValue(category);
+                driver.findElement(By.id("titleen_US"))
+                        .sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
+                driver.switchTo().frame(0);
+                WebElement desc = driver.findElement(By.id("tinymce"));
+                desc.click();
+                desc.sendKeys(program.description);
+                driver.switchTo().defaultContent();
+                driver.findElement(By.name("qqfile")).sendKeys(program.imagePath);
+                Select countries = new Select(driver.findElement(By.id("countryId")));
+                Select regions = new Select(driver.findElement(By.id("regionId")));
+                Select cities = new Select(driver.findElement(By.id("cityId")));
+                countries.selectByVisibleText("United States");
+                regions.selectByVisibleText(top30StatesUSA[i]);
+                cities.selectByVisibleText(top30CitiesUSA[i]);
+                driver.findElement(By.id("meta_website-link")).sendKeys(program.url);
+                driver.findElement(By.id("meta_keywords")).sendKeys(program.keywords);
+                if (program.youtubeVideo != null)
+                    driver.findElement(By.name("s_youtube")).sendKeys(program.youtubeVideo);
+                driver.findElement(By.xpath("//input[@value='001']")).click();
+                keyboard.type("\t\n");
+                driver.get(publishURL);
+                if (driver.getCurrentUrl().equals(homeURL))
+                    driver.get(publishURL);
+            }
+        }
+    }
+
+    private static void postAdsIndia(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String category) {
+        for (int i = 0; i < top2CitiesIndia.length; i++) {
+            for (int j = 0; j < programs.length; j++) {
+                AffiliateProgram program = programs[j];
+                Select categories = new Select(driver.findElement(By.id("catId")));
+                categories.selectByValue(category);
+                driver.findElement(By.id("titleen_US"))
+                        .sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
+                driver.switchTo().frame(0);
+                WebElement desc = driver.findElement(By.id("tinymce"));
+                desc.click();
+                desc.sendKeys(program.description);
+                driver.switchTo().defaultContent();
+                driver.findElement(By.name("qqfile")).sendKeys(program.imagePath);
+                Select countries = new Select(driver.findElement(By.id("countryId")));
+                Select regions = new Select(driver.findElement(By.id("regionId")));
+                Select cities = new Select(driver.findElement(By.id("cityId")));
+                countries.selectByVisibleText("India");
+                regions.selectByVisibleText(top2StatesIndia[i]);
+                cities.selectByVisibleText(top2CitiesIndia[i]);
+                driver.findElement(By.id("meta_website-link")).sendKeys(program.url);
+                driver.findElement(By.id("meta_keywords")).sendKeys(program.keywords);
+                if (program.youtubeVideo != null)
+                    driver.findElement(By.name("s_youtube")).sendKeys(program.youtubeVideo);
+                driver.findElement(By.xpath("//input[@value='001']")).click();
+                keyboard.type("\t\n");
+                driver.get(publishURL);
+                if (driver.getCurrentUrl().equals(homeURL))
+                    driver.get(publishURL);
+            }
+        }
+    }
+
+    private static void postAdsAus(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String category) {
+        for (int i = 0; i < top5CitiesAus.length; i++) {
+            for (int j = 0; j < programs.length; j++) {
+                AffiliateProgram program = programs[j];
+                Select categories = new Select(driver.findElement(By.id("catId")));
+                categories.selectByValue(category);
+                driver.findElement(By.id("titleen_US"))
+                        .sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
+                driver.switchTo().frame(0);
+                WebElement desc = driver.findElement(By.id("tinymce"));
+                desc.click();
+                desc.sendKeys(program.description);
+                driver.switchTo().defaultContent();
+                driver.findElement(By.name("qqfile")).sendKeys(program.imagePath);
+                Select countries = new Select(driver.findElement(By.id("countryId")));
+                Select regions = new Select(driver.findElement(By.id("regionId")));
+                Select cities = new Select(driver.findElement(By.id("cityId")));
+                countries.selectByVisibleText("Australia");
+                regions.selectByVisibleText(top5StatesAus[i]);
+                cities.selectByVisibleText(top5CitiesAus[i]);
+                driver.findElement(By.id("meta_website-link")).sendKeys(program.url);
+                driver.findElement(By.id("meta_keywords")).sendKeys(program.keywords);
+                if (program.youtubeVideo != null)
+                    driver.findElement(By.name("s_youtube")).sendKeys(program.youtubeVideo);
+                driver.findElement(By.xpath("//input[@value='001']")).click();
+                keyboard.type("\t\n");
+                driver.get(publishURL);
+                if (driver.getCurrentUrl().equals(homeURL))
+                    driver.get(publishURL);
+            }
+        }
+    }
+
+    private static void postAdsCanada(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String category) {
+        for (int i = 0; i < top5CitiesCanada.length; i++) {
+            for (int j = 0; j < programs.length; j++) {
+                AffiliateProgram program = programs[j];
+                Select categories = new Select(driver.findElement(By.id("catId")));
+                categories.selectByValue(category);
+                driver.findElement(By.id("titleen_US"))
+                        .sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
+                driver.switchTo().frame(0);
+                WebElement desc = driver.findElement(By.id("tinymce"));
+                desc.click();
+                desc.sendKeys(program.description);
+                driver.switchTo().defaultContent();
+                driver.findElement(By.name("qqfile")).sendKeys(program.imagePath);
+                Select countries = new Select(driver.findElement(By.id("countryId")));
+                Select regions = new Select(driver.findElement(By.id("regionId")));
+                Select cities = new Select(driver.findElement(By.id("cityId")));
+                countries.selectByVisibleText("Canada");
+                regions.selectByVisibleText(top5StatesCanada[i]);
+                cities.selectByVisibleText(top5CitiesCanada[i]);
+                driver.findElement(By.id("meta_website-link")).sendKeys(program.url);
+                driver.findElement(By.id("meta_keywords")).sendKeys(program.keywords);
+                if (program.youtubeVideo != null)
+                    driver.findElement(By.name("s_youtube")).sendKeys(program.youtubeVideo);
+                driver.findElement(By.xpath("//input[@value='001']")).click();
+                keyboard.type("\t\n");
+                driver.get(publishURL);
+                if (driver.getCurrentUrl().equals(homeURL))
+                    driver.get(publishURL);
+            }
         }
     }
 
