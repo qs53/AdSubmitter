@@ -1,7 +1,6 @@
 package ad_forums;
 
 import ads.*;
-import keyboard.Keyboard;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,24 +34,23 @@ public class FreeAdForum {
             driver.findElement(By.id("password")).sendKeys("freeadforumisgood123");
             driver.findElement(By.xpath("//button[@type='submit']")).submit();
 
-            Keyboard keyboard = new Keyboard();
             String[] categories = new String[] { workFromHomeCat, workAtHomeCat, affMarkCat, businessOppsCat };
             AffiliateProgram[] programs = new AffiliateProgram[] { MinuteAffiliate.getInstance(), SAS.getInstance(),
                     ClickBank.getInstance(), MillionareSociety.getInstance() };
 
-            postAdsIndia(programs, driver, keyboard, categories);
-            postAdsAus(programs, driver, keyboard, categories);
-            //            postAdsCanada(programs, driver, keyboard, categories);
-            //            postAdsUSA(programs, driver, keyboard, categories);
+            postAdsIndia(programs, driver, categories);
+            postAdsAus(programs, driver, categories);
+            postAdsCanada(programs, driver, categories);
+            postAdsUSA(programs, driver, categories);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void postAdsUSA(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String[] cats) {
-        for (int k = 0; k < cats.length; k++) {
-            for (int i = 0; i < top30CitiesUSA.length; i++) {
+    private static void postAdsUSA(AffiliateProgram[] programs, WebDriver driver, String[] cats) {
+        for (int i = 0; i < top30CitiesUSA.length; i++) {
+            for (int k = 0; k < cats.length; k++) {
                 for (int j = 0; j < programs.length; j++) {
                     AffiliateProgram program = programs[j];
                     Select categories = new Select(driver.findElement(By.id(FreeGlobalClassified.categoryId)));
@@ -76,7 +74,7 @@ public class FreeAdForum {
                     if (program.youtubeVideo != null)
                         driver.findElement(By.name(FreeGlobalClassified.youtubeId)).sendKeys(program.youtubeVideo);
                     driver.findElement(By.xpath(radioButtonPath)).click();
-                    keyboard.type("\t\n");
+                    driver.findElement(By.xpath("//button[@type='submit']")).submit();
                     driver.get(publishURL);
                     if (!driver.getCurrentUrl().equals(publishURL))
                         driver.get(publishURL);
@@ -85,9 +83,9 @@ public class FreeAdForum {
         }
     }
 
-    private static void postAdsIndia(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String[] cats) {
-        for (int k = 0; k < cats.length; k++) {
-            for (int i = 0; i < top2CitiesIndia.length; i++) {
+    private static void postAdsIndia(AffiliateProgram[] programs, WebDriver driver, String[] cats) {
+        for (int i = 0; i < top2CitiesIndia.length; i++) {
+            for (int k = 0; k < cats.length; k++) {
                 for (int j = 0; j < programs.length; j++) {
                     AffiliateProgram program = programs[j];
                     Select categories = new Select(driver.findElement(By.id(FreeGlobalClassified.categoryId)));
@@ -111,7 +109,7 @@ public class FreeAdForum {
                     if (program.youtubeVideo != null)
                         driver.findElement(By.name(FreeGlobalClassified.youtubeId)).sendKeys(program.youtubeVideo);
                     driver.findElement(By.xpath(radioButtonPath)).click();
-                    keyboard.type("\t\n");
+                    driver.findElement(By.xpath("//button[@type='submit']")).submit();
                     driver.get(publishURL);
                     if (!driver.getCurrentUrl().equals(publishURL))
                         driver.get(publishURL);
@@ -120,9 +118,9 @@ public class FreeAdForum {
         }
     }
 
-    private static void postAdsAus(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String[] cats) {
-        for (int k = 0; k < cats.length; k++) {
-            for (int i = 0; i < top5CitiesAus.length; i++) {
+    private static void postAdsAus(AffiliateProgram[] programs, WebDriver driver, String[] cats) {
+        for (int i = 0; i < top5CitiesAus.length; i++) {
+            for (int k = 0; k < cats.length; k++) {
                 for (int j = 0; j < programs.length; j++) {
                     AffiliateProgram program = programs[j];
                     Select categories = new Select(driver.findElement(By.id(FreeGlobalClassified.categoryId)));
@@ -137,10 +135,17 @@ public class FreeAdForum {
                     driver.findElement(By.name(FreeGlobalClassified.imageId)).sendKeys(program.imagePath);
                     Select countries = new Select(driver.findElement(By.id(FreeGlobalClassified.countryId)));
                     countries.selectByVisibleText("Australia");
-                    try { Thread.sleep(2000); } catch (InterruptedException e) {}
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                    }
                     Select regions = new Select(driver.findElement(By.id(FreeGlobalClassified.regionId)));
                     regions.selectByVisibleText(top5StatesAus[i]);
-                    if (i == 4) try { Thread.sleep(2000); } catch (InterruptedException e) {}
+                    if (i == 4)
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                        }
                     Select cities = new Select(driver.findElement(By.id(FreeGlobalClassified.cityId)));
                     cities.selectByVisibleText(top5CitiesAus[i]);
                     driver.findElement(By.id(FreeGlobalClassified.websiteId)).sendKeys(program.url);
@@ -148,7 +153,7 @@ public class FreeAdForum {
                     if (program.youtubeVideo != null)
                         driver.findElement(By.name(FreeGlobalClassified.youtubeId)).sendKeys(program.youtubeVideo);
                     driver.findElement(By.xpath(radioButtonPath)).click();
-                    keyboard.type("\t\n");
+                    driver.findElement(By.xpath("//button[@type='submit']")).submit();
                     driver.get(publishURL);
                     if (!driver.getCurrentUrl().equals(publishURL))
                         driver.get(publishURL);
@@ -157,9 +162,9 @@ public class FreeAdForum {
         }
     }
 
-    private static void postAdsCanada(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String[] cats) {
-        for (int k = 0; k < cats.length; k++) {
-            for (int i = 0; i < top5CitiesCanada.length; i++) {
+    private static void postAdsCanada(AffiliateProgram[] programs, WebDriver driver, String[] cats) {
+        for (int i = 0; i < top5CitiesCanada.length; i++) {
+            for (int k = 0; k < cats.length; k++) {
                 for (int j = 0; j < programs.length; j++) {
                     AffiliateProgram program = programs[j];
                     Select categories = new Select(driver.findElement(By.id(FreeGlobalClassified.categoryId)));
@@ -183,7 +188,7 @@ public class FreeAdForum {
                     if (program.youtubeVideo != null)
                         driver.findElement(By.name(FreeGlobalClassified.youtubeId)).sendKeys(program.youtubeVideo);
                     driver.findElement(By.xpath(radioButtonPath)).click();
-                    keyboard.type("\t\n");
+                    driver.findElement(By.xpath("//button[@type='submit']")).submit();
                     driver.get(publishURL);
                     if (!driver.getCurrentUrl().equals(publishURL))
                         driver.get(publishURL);

@@ -1,7 +1,6 @@
 package ad_forums;
 
 import ads.*;
-import keyboard.Keyboard;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,25 +43,25 @@ public class USAClassified {
             driver.findElement(By.id("password")).sendKeys("usafreeisgood123");
             driver.findElement(By.xpath("//button[@type='submit']")).submit();
 
-            Keyboard keyboard = new Keyboard();
-            String[] categories = new String[]{workFromHomeCat, affMarkCat};
+            String[] categories = new String[] { workFromHomeCat, affMarkCat };
             AffiliateProgram[] programs = new AffiliateProgram[] { MinuteAffiliate.getInstance(), SAS.getInstance(),
                     ClickBank.getInstance(), MillionareSociety.getInstance() };
-            postAdsUSA(programs, driver, keyboard, categories);
+            postAdsUSA(programs, driver, categories);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void postAdsUSA(AffiliateProgram[] programs, WebDriver driver, Keyboard keyboard, String[] cats) {
-        for (int k = 0; k < cats.length; k++) {
-            for (int i = 0; i < allCitiesUSA.length; i++) {
+    private static void postAdsUSA(AffiliateProgram[] programs, WebDriver driver, String[] cats) {
+        for (int i = 0; i < allCitiesUSA.length; i++) {
+            for (int k = 0; k < cats.length; k++) {
                 for (int j = 0; j < programs.length; j++) {
                     AffiliateProgram program = programs[j];
                     Select categories = new Select(driver.findElement(By.id(categoryId)));
                     categories.selectByValue(cats[k]);
-                    driver.findElement(By.id(titleId)).sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
+                    driver.findElement(By.id(titleId))
+                            .sendKeys(program.title + " (" + UUID.randomUUID().toString().replace("-", "") + ")");
                     driver.switchTo().frame(0);
                     WebElement desc = driver.findElement(By.id(descId));
                     desc.click();
@@ -71,19 +70,21 @@ public class USAClassified {
                     driver.findElement(By.name(imageId)).sendKeys(program.imagePath);
                     Select regions = new Select(driver.findElement(By.id(regionId)));
                     regions.selectByVisibleText(allStatesUSA[i]);
-                    if (i == 0) try { Thread.sleep(2000); } catch (InterruptedException e) {}
+                    if (i == 0)
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                        }
                     Select cities = new Select(driver.findElement(By.id(cityId)));
                     cities.selectByVisibleText(allCitiesUSA[i]);
                     driver.findElement(By.id(websiteId)).sendKeys(program.url);
                     driver.findElement(By.id(keywordsId)).sendKeys(program.keywords);
-                    if (program.youtubeVideo != null) {
+                    if (program.youtubeVideo != null)
                         driver.findElement(By.name(youtubeId)).sendKeys(program.youtubeVideo);
-                        keyboard.type("\t\n");
-                    } else {
-                        keyboard.type("\t\t\t\t\n");
-                    }
+                    driver.findElement(By.xpath("//button[@type='submit']")).submit();
                     driver.get(publishURL);
-                    if (!driver.getCurrentUrl().equals(publishURL)) driver.get(publishURL);
+                    if (!driver.getCurrentUrl().equals(publishURL))
+                        driver.get(publishURL);
                 }
             }
         }
