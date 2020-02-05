@@ -2,7 +2,7 @@ package ads;
 
 public class MinuteAffiliate extends AffiliateProgram {
 
-    private static String[] titles = new String[]{"Make money online with the \"12 minute Affiliate\" system!", "Make money online! Start earning commissions in 12 minutes!",
+    private static String[] titles = new String[]{"MAKE MONEY ONLINE WITH THE \"12 MINUTE AFFILIATE\" SYSTEM!", "Make money online! Start earning commissions in 12 minutes!",
             "Start earning commissions in as little as 12 minutes!", "Start earning commissions in 12 minutes!", "Make money online in 12 minutes!", "Earn commissions in as little as 12 minutes!",
             "Earn commissions in 12 minutes!", "Make money in as little as 12 minutes!", "Make money in 12 minutes!", "Make money with the \"12 minute Affiliate\" system!"};
     static int index = 0;

@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class ClickBank extends AffiliateProgram {
 
-    private static String[] titles = new String[]{"EARN MONEY WITH CLICKBANK!", "Your First ClickBank Check Is Waiting for You!",
+    private static String[] titles = new String[]{"EARN REAL MONEY WITH CLICKBANK!", "Your First ClickBank Check Is Waiting for You!",
             "Your First ClickBank Check Is Waiting for You To Go And Get It", "Your First ClickBank Check Is Waiting for You", "Learn to make money online with ClickBank University!",
             "Learn to make money online with ClickBank University", "Learn to make money online!", "Learn to make money online", "Secrets to earning money online!", "Secrets to earning money online"};
     static int index = 0;

@@ -136,10 +136,12 @@ public class FreeAdForum {
                     driver.switchTo().defaultContent();
                     driver.findElement(By.name(FreeGlobalClassified.imageId)).sendKeys(program.imagePath);
                     Select countries = new Select(driver.findElement(By.id(FreeGlobalClassified.countryId)));
-                    Select regions = new Select(driver.findElement(By.id(FreeGlobalClassified.regionId)));
-                    Select cities = new Select(driver.findElement(By.id(FreeGlobalClassified.cityId)));
                     countries.selectByVisibleText("Australia");
+                    try { Thread.sleep(2000); } catch (InterruptedException e) {}
+                    Select regions = new Select(driver.findElement(By.id(FreeGlobalClassified.regionId)));
                     regions.selectByVisibleText(top5StatesAus[i]);
+                    if (i == 4) try { Thread.sleep(2000); } catch (InterruptedException e) {}
+                    Select cities = new Select(driver.findElement(By.id(FreeGlobalClassified.cityId)));
                     cities.selectByVisibleText(top5CitiesAus[i]);
                     driver.findElement(By.id(FreeGlobalClassified.websiteId)).sendKeys(program.url);
                     driver.findElement(By.id(FreeGlobalClassified.keywordsId)).sendKeys(program.keywords);

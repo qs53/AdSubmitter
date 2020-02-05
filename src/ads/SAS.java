@@ -2,7 +2,7 @@ package ads;
 
 public class SAS extends AffiliateProgram {
     
-    private static String[] titles = new String[]{"Earn a 6-Figure Side-Income Online!",
+    private static String[] titles = new String[]{"EARN A 6-FIGURE SIDE-INCOME ONLINE!",
             "NEW MONEY MAKING SYSTEM",
             "Genius Way to Make Money Online (on the Side) Today!",
             "Follow This \"Beginner Friendly\" 3-Step Formula Webinar",

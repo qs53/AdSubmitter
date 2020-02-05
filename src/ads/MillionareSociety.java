@@ -2,7 +2,7 @@ package ads;
 
 public class MillionareSociety extends AffiliateProgram {
 
-    private static String[] titles = new String[]{"Work from home and earn a passive income online!", "Quit your job and earn a passive income online!",
+    private static String[] titles = new String[]{"WORK FROM HOME AND EARN A PASSIVE INCOME ONLINE!", "Quit your job and earn a passive income online!",
             "Work from home and earn a passive income online", "Quit your job and earn a passive income online", "Want to work from home full time? Click here!",
             "Want to work from home full time? Click HERE!", "Want to work from home full time? Click here", "Want to work from home full time? CLICK HERE",
             "Want to work from home full time? CLICK HERE!", "Want to work from home full time? CLICK HERE!!"};
